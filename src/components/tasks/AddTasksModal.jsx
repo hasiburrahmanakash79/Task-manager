@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import Modal from "../ui/Modal";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux/features/tasks/tasksSlice";
 
 const AddTasksModal = ({ isOpen, setIsOpen }) => {
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -15,7 +18,7 @@ const AddTasksModal = ({ isOpen, setIsOpen }) => {
   }
 
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(addTask(data))
     onCancel()
   };
   return (
@@ -87,9 +90,9 @@ const AddTasksModal = ({ isOpen, setIsOpen }) => {
               placeholder="Enter title"
               className="input input-bordered rounded"
             >
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
 
             </select>
             {errors.title && <span>This field is required</span>}
