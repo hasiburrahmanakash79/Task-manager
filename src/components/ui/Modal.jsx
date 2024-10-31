@@ -1,14 +1,14 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 
-export default function Modal({ isOpen, setIsOpen, title, children}) {
+export default function Modal({ isOpen, setIsOpen, title, children }) {
   function closeModal() {
     setIsOpen(false);
   }
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isOpen} as={Fragment} className="z-[1000]">
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
@@ -19,7 +19,7 @@ export default function Modal({ isOpen, setIsOpen, title, children}) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/25" />
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -40,21 +40,7 @@ export default function Modal({ isOpen, setIsOpen, title, children}) {
                   >
                     {title}
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      {children}
-                    </p>
-                  </div>
-
-                  <div className="mt-4">
-                    {/* <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                     
-                    </button> */}
-                  </div>
+                  {children}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
