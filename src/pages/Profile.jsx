@@ -1,8 +1,8 @@
 
 const Profile = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center p-4">
-      <div className="w-full max-w-4xl bg-white rounded-lg shadow-xl overflow-hidden md:flex border">
+    <div className="min-h-screen flex bg-slate-100 justify-center items-center p-4">
+      <div className="w-full max-w-4xl bg-white rounded-lg shadow-xl overflow-hidden md:flex">
         {/* Profile Image Section */}
         <div className="flex flex-col items-center bg-gradient-to-br from-indigo-700 to-purple-600 p-6 text-white md:w-1/3">
           <div className="relative w-48 h-48 mb-4">
