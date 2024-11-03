@@ -91,7 +91,7 @@ const Tasks = () => {
           </div>
         </div>
         <div className="col-span-3 border-l-2 border-secondary/20 px-10 pt-10">
-          <div>
+          {/* <div>
             <h1 className="text-xl">Members</h1>
             <div className="flex gap-3 mt-3">
               <div className="h-10 w-10 rounded-xl overflow-hidden">
@@ -130,7 +130,31 @@ const Tasks = () => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
+          <div>
+  <h1 className="text-xl">Members</h1>
+  <div className="flex gap-3 mt-3">
+    {[
+      { src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80", name: "User 1" },
+      { src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80", name: "User 2" },
+      { src: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80", name: "User 3" },
+      { src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80", name: "User 4" },
+      { src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80", name: "User 5" },
+    ].map((member, index) => (
+      <div key={index} className="relative h-10 w-10 rounded-xl overflow-hidden group">
+        <img
+          src={member.src}
+          alt={member.name}
+          className="object-cover h-full w-full"
+        />
+        <div className="absolute bottom-0 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs text-center p-1 rounded">
+          {member.name}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
           <MyTasks />
         </div>
       </div>
