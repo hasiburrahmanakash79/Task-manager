@@ -4,8 +4,6 @@ const Settings = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
       <div className="w-full max-w-4xl">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">Settings</h1>
-        
-        {/* Account Settings */}
         <div className="bg-white shadow-lg rounded-lg p-6 mb-6">
           <h2 className="text-2xl font-semibold text-gray-700 mb-4">Account Settings</h2>
           <div className="flex flex-col gap-4">
