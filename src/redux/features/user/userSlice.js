@@ -3,8 +3,8 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import auth from "../../../utils/firebase.config";
 
 const initialState = {
-  name: "HR Akash",
-  email: "hrakash@gmail.com",
+  name: "",
+  email: "",
   isLoading: true,
   isError: false,
   error: "",
@@ -15,13 +15,12 @@ export const createUser = createAsyncThunk(
   async ({ email, password, name }) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
     console.log(data);
-    await updateProfile(auth.currentUser,{
-      displayName: name
-    })
-    return{
+    await updateProfile(auth.currentUser, {
+      displayName: name,
+    });
+    return {
       email: data.user.email,
       name: data.user.displayName,
-
     };
   }
 );
@@ -30,43 +29,45 @@ const userSlice = createSlice({
   name: "userSlice",
   initialState,
   reducers: {
-    setUser: (state, {payload}) => {
+    setUser: (state, { payload }) => {
       state.name = payload.name;
       state.email = payload.email;
     },
-    toggleLoading:  (state, {payload}) => {
+
+    toggleLoading: (state, { payload }) => {
       state.isLoading = payload;
-    }
+    },
+    logout: (state) => {
+      state.name = "";
+      state.email = "";
+    },
   },
   extraReducers: (builder) => {
     builder
-    .addCase(createUser.pending, (state) => {
-      state.isLoading = true;
-      state.isError = false;
-      state.name = "";
-      state.email = "";
-      state.error = "";
+      .addCase(createUser.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+        state.name = "";
+        state.email = "";
+        state.error = "";
       })
-      .addCase(createUser.fulfilled, (state, {payload}) => {
+      .addCase(createUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isError = false;
         state.name = payload.name;
         state.email = payload.email;
         state.error = "";
-
       })
       .addCase(createUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.name = '';
-        state.email = '';
+        state.name = "";
+        state.email = "";
         state.error = action.error.message;
-
-      })
-
-  }
+      });
+  },
 });
 
-export const  {setUser, toggleLoading} = userSlice.actions;
+export const { setUser, toggleLoading, logout } = userSlice.actions;
 
 export default userSlice.reducer;
